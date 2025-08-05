@@ -26,14 +26,14 @@ Node* buildTree(){
 
 int height(Node* root,int &maxi){
     if(root==NULL) return 0;
-    int lsum=height(root->left,maxi);
-    int rsum=height(root->right,maxi);
+    int lsum=max(0,height(root->left,maxi));
+    int rsum=max(0,height(root->right,maxi));
     maxi=max(maxi,lsum+rsum+root->data);
     return root->data + max(lsum,rsum);
 }
 
 int maxpathsum(Node* root){
-    int maxi=0;
+    int maxi=INT_MIN;
     int h=height(root,maxi);
     return maxi;
 }
